@@ -36,6 +36,9 @@ management:
   # It's possible to manage all endpoints one by one.
   endpoint:
 
+    demo:
+      enabled: true # Enables custom endpoint /actuator/demo.
+
     health:
       show-details: always # Values: always, never, when-authorized - by Spring Security.
 
