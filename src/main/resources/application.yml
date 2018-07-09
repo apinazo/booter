@@ -1,1 +1,51 @@
 # Default configuration.
+
+# General info used by Actuator in the /info endpoint.
+info:
+  build:
+    # Values from pom.xml and bootstrap.yml.
+    version: @project.version@
+    artifactId: @project.artifactId@
+    groupId: @project.groupId@
+    name: bootbase
+    description: ${info.build.name} is a bootstrap project for Spring Boot. # Example of placeholder in properties.
+
+# Server.
+server:
+  port: 8000 # Use 0 for a free random port.
+  compression:
+    enabled: true # Enable compression for html, xml, css and plain text.
+    min-response-size: 1024 # For files greater or equal to 1024 bytes.
+  servlet:
+    context-path: /api
+
+# Actuator.
+# https://docs.spring.io/spring-boot/docs/current/actuator-api//html/#overview
+# IMP: If this configuration is in the bootstrap file it will be ignored.
+# The list of all enabled endpoints will show in the app log when it starts.
+management:
+
+  endpoints:
+    web:
+      base-path: /actuator # URL prefix to all endpoints. "/actuator" by default.
+      enabled-by-default: true # By default is true but in order to work they must be both enabled and exposed.
+      exposure:
+        include: "*" # Expose all endpoints. By default only health and info are exposed.
+#        exclude: shutdown, beans # Don't expose this endpoints.
+
+  # It's possible to manage all endpoints one by one.
+  endpoint:
+
+    health:
+      show-details: always # Values: always, never, when-authorized - by Spring Security.
+
+  metrics:
+    web:
+      server:
+        # Enable global measurement of all in the app requests. Alternatively this could be set to false
+        # and then each individual @Controller to measure can be annotated with @Timed.
+        # Statistics will be available at the URI:
+        #     /actuator/metrics/http.server.requests?tag=uri:<URL encoded endpoint URI>
+        # Example for /people/{id}:
+        #     http://localhost:8001/actuator/metrics/http.server.requests?tag=uri:%2Fpersons%2F%7Bid%7D
+        auto-time-requests: true
