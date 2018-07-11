@@ -64,7 +64,7 @@ public class DemoEndpoint {
     }
 
     /**
-     * Returns vale from a given key.
+     * Returns value for a given key.
      *
      * Example request: curl -i -X GET http://localhost:8001/actuator/demo/key1
      *
