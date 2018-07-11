@@ -37,28 +37,91 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Actuator adds utility endpoints such as /metrics or /health. -->
+		<!-- Actuator
+		Adds utility endpoints such as /metrics or /health. -->
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Spring MVC and embedded Tomcat server. -->
+        <!-- Spring MVC
+        Web support and embedded Tomcat server. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+		<!-- Lombok
+		Annotations to avoid boilerplate code in POJOs. -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.16</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Apache Commons IO
+		Set of utilities such as FileUtils -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Builds fat jar. -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Generates git commit info. -->
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.4</version>
+				<executions>
+					<!-- Generate the git info file. -->
+					<execution>
+						<id>get-the-git-infos</id>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+					<!-- Cancel packaging if git repository is dirty. -->
+					<execution>
+						<id>validate-the-git-infos</id>
+						<goals>
+							<goal>validateRevision</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+					<prefix>git</prefix>
+					<verbose>false</verbose>
+					<generateGitPropertiesFile>true</generateGitPropertiesFile>
+					<generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+					<format>json</format>
+					<gitDescribe>
+						<skip>false</skip>
+						<always>false</always>
+						<dirty>-dirty</dirty>
+					</gitDescribe>
+					<validationProperties>
+						<!-- Verify that the current repository is not dirty. -->
+						<validationProperty>
+							<name>validating git dirty</name>
+							<value>${git.dirty}</value>
+							<shouldMatchTo>false</shouldMatchTo>
+						</validationProperty>
+					</validationProperties>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
