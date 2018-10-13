@@ -3,8 +3,16 @@ Spring Boot base app for projects
 
 ## Technology
 
-Based on Spring Boot 2.0.0.RELEASE.
+Based on Spring Boot 2.
 
+## Versioning
+
+This project follows [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+
+Why did I choose Gitflow?
+
+* I wanted it to be a clear example of how to use this versioning flow.
+* It helps me having a clean line of work.
 
 ## Package structure
 
