@@ -31,13 +31,13 @@ public class CustomEnvironmentPostProcessor implements EnvironmentPostProcessor 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
 
-        // Load the yml file.
+        // Load the yml file looking for it everywhere in the classpath.
         Resource path = new ClassPathResource(configFileName);
 
         // Get all its properties.
         PropertySource<?> propertySource = loadYml(path);
 
-        // Add them all to the environment.
+        // Add them all to the environment, at the end of all the resources.
         environment.getPropertySources().addLast(propertySource);
     }
 
