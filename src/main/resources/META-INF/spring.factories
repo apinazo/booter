@@ -1,0 +1,3 @@
+
+# Listeners that are initialized before context is ready.
+org.springframework.context.ApplicationListener=es.apinazo.booter.events.ApplicationPreparedEventListener
