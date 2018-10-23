@@ -5,6 +5,8 @@ import es.apinazo.booter.events.ApplicationStartingEventListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * Sample Spring Boot app.
@@ -14,7 +16,9 @@ import org.springframework.context.annotation.ComponentScan;
  *
  * @{@link SpringBootApplication} equals to @Configuration, @EnableAutoConfiguration and @ComponentScan.
  * @{@link @{@link ComponentScan} will scan all packages here and below.
+ * @{@link EnableScheduling} enables Spring to use {@link Scheduled} tasks.
  */
+@EnableScheduling
 @SpringBootApplication
 public class BooterApplication {
 
