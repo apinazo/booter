@@ -16,8 +16,8 @@ server:
   compression:
     enabled: true # Enable compression for html, xml, css and plain text.
     min-response-size: 1024 # For files greater or equal to 1024 bytes.
-  servlet:
-    context-path: /api
+  #servlet:
+    #context-path: /api # To customize the base path of URLs.
 
 # Actuator.
 # https://docs.spring.io/spring-boot/docs/current/actuator-api//html/#overview
