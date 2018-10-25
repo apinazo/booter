@@ -53,6 +53,14 @@ management:
         #     http://localhost:8001/actuator/metrics/http.server.requests?tag=uri:%2Fpersons%2F%7Bid%7D
         auto-time-requests: true
 
+# Logging configuration.
+logging:
+  level:
+    es.apinazo: TRACE # Level by package.
+    org.hibernate.SQL: DEBUG # To show SQL queries.
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE # And their param values.
+    root: INFO # Global level for anything that doesn't match the level by package.
+
 # Spring Framework properties.
 spring:
 
@@ -75,3 +83,4 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
