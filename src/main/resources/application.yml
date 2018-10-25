@@ -52,3 +52,26 @@ management:
         # Example for /people/{id}:
         #     http://localhost:8001/actuator/metrics/http.server.requests?tag=uri:%2Fpersons%2F%7Bid%7D
         auto-time-requests: true
+
+# Spring Framework properties.
+spring:
+
+  # Logs.
+  output:
+    ansi:
+      enabled: ALWAYS # Enable color logs.
+
+  # JPA.
+  jpa:
+    hibernate:
+      show-sql: false # Hide Hibernate logs but if log level is DEBUG this will be ignored.
+      format-sql: true # Beautify ugly Hibernate queries.
+      ddl-auto: update # none, update, create, create-drop.
+
+  # Datasource.
+  # Use an embedded DB for default profile.
+  datasource:
+    url: jdbc:h2:mem:~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver

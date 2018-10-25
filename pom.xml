@@ -117,6 +117,31 @@
 			<version>1.2.5</version>
 		</dependency>
 
+        <!-- starter-data-jpa
+        Adds DB support, JPA and autoconfigured datasources.
+        Also adds HikariCP connection pool, preferred by Spring Boot by its performance.-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- H2
+        In memory DB, useful for tests.
+        If Spring Boot developer tools are in the classpath,
+        the H2 web console will be enabled at the endpoint: /h2-console
+        -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <!--<scope>test</scope>-->
+        </dependency>
+
+        <!-- MySQL driver. -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
 	</dependencies>
 
 	<build>
