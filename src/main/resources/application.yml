@@ -57,6 +57,7 @@ management:
 logging:
   level:
     es.apinazo: TRACE # Level by package.
+    es.apinazo.booter.metrics: INFO
     org.hibernate.SQL: DEBUG # To show SQL queries.
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE # And their param values.
     root: INFO # Global level for anything that doesn't match the level by package.
