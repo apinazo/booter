@@ -24,7 +24,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 @RunWith(SpringRunner.class)
 // Use a free random port on each test execution.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SampleRPRCServiceIntegrationTest {
+public class SampleRPCServiceIntegrationTest {
 
     // The random generated port.
     @LocalServerPort
