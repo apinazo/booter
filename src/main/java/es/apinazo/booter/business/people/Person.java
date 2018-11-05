@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -29,6 +30,9 @@ public class Person {
     private String firstName;
 
     private String lastName;
+
+    @Column(unique = true)
+    private String personalId;
 
     @Enumerated
     private Gender gender;

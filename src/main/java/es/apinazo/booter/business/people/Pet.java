@@ -20,8 +20,8 @@ import javax.persistence.*;
 })
 @Data
 @NoArgsConstructor
-@ToString(exclude = "person") // Exclude person to avoid loops.
-@EqualsAndHashCode(exclude = "person")
+@ToString(exclude = "owner") // Exclude person to avoid loops.
+@EqualsAndHashCode(exclude = "owner")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 // Integer discriminator is less clear but much more efficient than a String one.
