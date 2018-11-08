@@ -1,4 +1,6 @@
+#
 # Default configuration.
+#
 
 # General info used by Actuator in the /info endpoint.
 info:
@@ -20,6 +22,7 @@ server:
     #context-path: /api # To customize the base path of URLs.
 
 # Actuator.
+#
 # https://docs.spring.io/spring-boot/docs/current/actuator-api//html/#overview
 # IMP: If this configuration is in the bootstrap file it will be ignored.
 # The list of all enabled endpoints will show in the app log when it starts.
@@ -77,7 +80,7 @@ spring:
       format-sql: true # Beautify ugly Hibernate queries.
       ddl-auto: update # none, update, create, create-drop.
 
-  # Datasource.
+  # Data source.
   # Use an embedded DB for default profile.
   datasource:
     url: jdbc:h2:mem:~/test
@@ -85,3 +88,39 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
+#
+# Custom configurations properties.
+#
+
+# Showcase of many kind of property mappings, used in the PropsConfiguration class.
+props:
+  name: A name
+  randomString: ${random.value}
+  uuid: ${random.uuid}
+  propFromAnother: ${props.name} # Injection of a prop already defined elsewhere.
+  number: ${random.int}
+  numberBelowAnother: ${random.int(10)}
+  numberBetweenTwoValues: ${random.int[10,20])}
+  enabled: true
+  notNullableProp: Not null
+  arrayOfThings: one, two, three
+  anotherArrayOfThings:
+    - one
+    - two
+    - three
+  listOfThings: one, two, three
+  mapOfThings:
+    key1: value1
+    key2: value2
+    key3: value3
+  firstNestedConf:
+    key: The key
+    value: The value
+  secondNestedConf:
+    key: The key
+    value: The value
+  nestedConfArray:
+    - key: one
+      value: one
+    - key: two
+      value: two
